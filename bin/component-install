@@ -170,6 +170,14 @@ function install(name, version) {
     if (!remote) return;
 
     var last = 0 === conf.remotes.length;
+
+    if ('string' === typeof remote) {
+      remote = {
+        type: 'github',
+        url: remote
+      };
+    }
+
     remote.url = url.parse(remote.url)
                     .href
                     .slice(0, -1);
