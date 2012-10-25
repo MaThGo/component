@@ -194,6 +194,7 @@ $ make test
  - [Mailing List](https://groups.google.com/group/componentjs)
  - component ["spec"](https://github.com/component/component/wiki/Spec)
  - join `#components` on freenode
+ - follow [@component_js](http://twitter.com/component_js) on twitter
  - [List](https://github.com/component/component/wiki/Components) of components
  - [F.A.Q](https://github.com/component/component/wiki/F.A.Q)
 
@@ -208,6 +209,7 @@ $ make test
   - Forbes Lindesay
   - Arpad Borsos
   - Dan Williams
+  - Damián Suárez
 
 ## License 
 
