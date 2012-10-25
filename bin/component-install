@@ -21,7 +21,7 @@ program
   .option('-d, --dev', 'install development dependencies')
   .option('-o, --out <dir>', 'output components to the given <dir>')
   .option('-f, --force', 'force installation even if previously installed')
-  .option('-s, --save', 'save the installed dep(s) to ./component.json')
+  .option('-s, --save', 'save the installed dep(s) to ./component.json');
 
 // examples
 
@@ -89,7 +89,10 @@ conf = exists('component.json')
   : {};
 
 conf.remotes = conf.remotes || [];
-conf.remotes.push('https://raw.github.com');
+conf.remotes.push({
+  type: 'github',
+  url: 'https://raw.github.com'
+});
 
 // install
 
@@ -166,15 +169,16 @@ function install(name, version) {
     var remote = conf.remotes[i++];
     if (!remote) return;
 
-    var last = 0 == conf.remotes.length;
-    remote = url.parse(remote);
-    remote.href = remote.href.slice(0, -1);
+    var last = 0 === conf.remotes.length;
+    remote.url = url.parse(remote.url)
+                    .href
+                    .slice(0, -1);
 
     var pkg = component.install(name, version, {
       dest: program.out,
       force: program.force,
       dev: program.dev,
-      remote: remote.href
+      remote: remote
     });
 
     pkg.once('error', next);
